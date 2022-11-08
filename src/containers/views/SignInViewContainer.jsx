@@ -1,6 +1,6 @@
 import { Header } from "../../components/Header"
 import { Sidebar } from "../../components/Sidebar"
-import SignInForm from "../../components/SignInForm"
+import SignInForm from "../../components/SignInForm/SignInForm"
 
 export const SignInViewContainer = () => {
     return <div>

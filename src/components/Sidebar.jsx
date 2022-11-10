@@ -1,4 +1,5 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 export const Sidebar = ({ isOpen = false, onCloseSidebar }) => {
   return (
@@ -14,10 +15,20 @@ export const Sidebar = ({ isOpen = false, onCloseSidebar }) => {
       </div>
       <div className="px-4">
         <ul>
-          <li>
-            <a href="#" className="text-white">
-              Meus favoritos
-            </a>
+          <li className="text-white mb-2">
+            <Link to='/'>
+             Meus favoritos
+            </Link>
+          </li>
+          <li className="text-white mb-2">
+              <Link to='/signin'>
+                Sign In
+              </Link>
+          </li>
+          <li className="text-white">
+              <Link to='/signup'>
+                Sign Up
+              </Link>
           </li>
         </ul>
       </div>

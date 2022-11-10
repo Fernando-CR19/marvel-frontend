@@ -1,11 +1,10 @@
-import { Header } from "../../components/Header"
-import { Sidebar } from "../../components/Sidebar"
-import SignUpForm from "../../components/SignUpForm"
+import SignUpForm from "../../components/SignUpForm/SignUpForm"
+import { View } from "../../components/View"
 
 export const SignUpViewContainer = () => {
     return <div>
-        <Header/>
-        <Sidebar/>
-        <SignUpForm/>
+        <View>
+            <SignUpForm/>
+        </View>
     </div>
 }

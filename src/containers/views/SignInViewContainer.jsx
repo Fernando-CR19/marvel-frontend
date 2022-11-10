@@ -1,11 +1,10 @@
-import { Header } from "../../components/Header"
-import { Sidebar } from "../../components/Sidebar"
 import SignInForm from "../../components/SignInForm/SignInForm"
+import { View } from "../../components/View"
 
 export const SignInViewContainer = () => {
     return <div>
-    <Header/>
-    <Sidebar/>
-    <SignInForm/>
+    <View>
+        <SignInForm/>
+    </View>
     </div>
 }

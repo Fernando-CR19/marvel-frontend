@@ -1,45 +1,64 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
-import { Header } from '../Header';
+import Field from '../Field';
 
-export default function SignUpForm() {
+export default function SignInForm({ handleSubmit, handleChange, handleBlur, isSubmitting, values, errors }) {
 
     const formik = useFormik({
         initialValues: {
-          Email: '',
-          Username: '',
-          Password: '',
+            Username: '',
+            Email: '',
+            Password: '',
         },
         onSubmit: values => {
-          console.log(values)
-          // alert(JSON.stringify(values, null, 2));
+            console.log(values)
+            // alert(JSON.stringify(values, null, 2));
         },
-      });
+    });
 
-  return (
-    <div className='ml-auto mr-auto mt-36 w-3/5 rounded-md'>
-        <form onSubmit={formik.handleSubmit}>
-            <div className=''>
-                <h4 className='text-4xl mb-4 ml-auto text-center'>Sign Up</h4>
-                <p className='mb-4 text-center'>Already have a Marvel account? <Link to='/signin' className='underline underline-offset-1 text-blue-500'>SIGN IN</Link></p>
+    return (
+        <form onSubmit={handleSubmit} className="max-w-lg mx-auto h-full flex flex-col justify-center mt-[5rem]">
+            <h3 className="text-lg text-center">Sign up</h3>
+            <div className="space-y-4">
+                <Field
+                    label="Username"
+                    type="username"
+                    name="username"
+                    value={values.username}
+                    placeholder="your username"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    errorMessage={errors.username}
+                />
+                <Field
+                    label="Email"
+                    type="text"
+                    name="email"
+                    value={values.email}
+                    placeholder="your@email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    errorMessage={errors.email}
+                />
+                <Field
+                    label="Password"
+                    type="password"
+                    name="password"
+                    value={values.password}
+                    placeholder="your password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    errorMessage={errors.password}
+                />
+                <button
+                    type="submit"
+                    // disabled={isSubmitting}
+                    className="text-red-800 bg-gray-100 px-4 py-4 rounded-lg w-full"
+                >
+                    Sign up
+                </button>
             </div>
-            <div className='flex flex-col gap-4'>
-                <div className='flex flex-col'>
-                    <label className='mb-1'>Email</label>
-                    <input id="Email" type="email" name="Email" onChange={formik.handleChange} value={formik.values.Email} className='w-full border-black border-2 rounded p-1'/>
-                </div>
-                <div className='flex flex-col'>
-                    <label className='mb-1'>Username</label>
-                    <input id="Username" type="text" name="Username" onChange={formik.handleChange} value={formik.values.Username} className='w-full border-black border-2 rounded p-1'/>
-                </div>
-                <div className='flex flex-col'>
-                    <label className='mb-1'>Password</label>
-                    <input id="Password" type="password" name="Password" onChange={formik.handleChange} value={formik.values.Password} className='w-full border-black border-2 mb-4 rounded p-1'/>
-                </div>
-            </div>
-            <button type="submit" className='w-full bg-blue-800 text-white p-2 rounded'>SIGN UP</button>
         </form>
-    </div>
-  )
+    )
 }
+

@@ -17,7 +17,7 @@ export default function SignInForm({ handleSubmit, handleChange, handleBlur, isS
       });
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg mx-auto h-full flex flex-col justify-center">
+    <form onSubmit={handleSubmit} className="max-w-lg mx-auto h-full flex flex-col justify-center mt-{5rem}">
       <h3 className="text-lg text-center">Sign in</h3>
       <div className="space-y-4">
         <Field
@@ -42,6 +42,7 @@ export default function SignInForm({ handleSubmit, handleChange, handleBlur, isS
         />
         <button
           type="submit"
+          disabled={isSubmitting}
           className="text-red-800 bg-gray-100 px-4 py-4 rounded-lg w-full"
         >
           Sign in

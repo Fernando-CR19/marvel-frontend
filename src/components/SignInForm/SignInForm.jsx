@@ -1,23 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { useFormik } from 'formik';
-import Field from '../Field';
+import { Field } from '../Field';
 
-export default function SignInForm({ handleSubmit, handleChange, handleBlur, isSubmitting, values, errors}) {
-
-    const formik = useFormik({
-        initialValues: {
-          Email: '',
-          Password: '',
-        },
-        onSubmit: values => {
-          console.log(values)
-          // alert(JSON.stringify(values, null, 2));
-        },
-      });
+export function SignInForm({ handleSubmit, handleChange, handleBlur, isSubmitting, values, errors }) {
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg mx-auto h-full flex flex-col justify-center mt-{5rem}">
+    <form onSubmit={handleSubmit} className="max-w-lg mx-auto h-full flex flex-col justify-center mt-20">
       <h3 className="text-lg text-center">Sign in</h3>
       <div className="space-y-4">
         <Field

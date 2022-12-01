@@ -1,35 +1,29 @@
-import React from 'react'
-import { useFormik } from 'formik'
-import Field from '../Field';
+import { Field } from "../Field";
 
-export default function SignInForm({ handleSubmit, handleChange, handleBlur, isSubmitting, values, errors }) {
-
-    const formik = useFormik({
-        initialValues: {
-            Username: '',
-            Email: '',
-            Password: '',
-        },
-        onSubmit: values => {
-            console.log(values)
-            // alert(JSON.stringify(values, null, 2));
-        },
-    });
-
+export const SignUpForm = ({
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    isSubmitting,
+    values = {},
+    errors = {},
+    className,
+}) => {
     return (
-        <form onSubmit={handleSubmit} className="max-w-lg mx-auto h-full flex flex-col justify-center mt-[5rem]">
+        <form onSubmit={handleSubmit} className={className}>
             <h3 className="text-lg text-center">Sign up</h3>
             <div className="space-y-4">
                 <Field
-                    label="Username"
-                    type="username"
-                    name="username"
-                    value={values.username}
-                    placeholder="your username"
+                    label="Name"
+                    type="text"
+                    name="name"
+                    value={values.name}
+                    placeholder="your name"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    errorMessage={errors.username}
+                    errorMessage={errors.name}
                 />
+
                 <Field
                     label="Email"
                     type="text"
@@ -40,6 +34,7 @@ export default function SignInForm({ handleSubmit, handleChange, handleBlur, isS
                     onBlur={handleBlur}
                     errorMessage={errors.email}
                 />
+
                 <Field
                     label="Password"
                     type="password"
@@ -50,15 +45,24 @@ export default function SignInForm({ handleSubmit, handleChange, handleBlur, isS
                     onBlur={handleBlur}
                     errorMessage={errors.password}
                 />
+
+                <Field
+                    label="Confirm your password"
+                    type="password"
+                    name="password_confirm"
+                    value={values.password_confirm}
+                    placeholder="your password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    errorMessage={errors.password_confirm}
+                />
                 <button
                     type="submit"
-                    // disabled={isSubmitting}
                     className="text-red-800 bg-gray-100 px-4 py-4 rounded-lg w-full"
                 >
                     Sign up
                 </button>
             </div>
         </form>
-    )
-}
-
+    );
+};

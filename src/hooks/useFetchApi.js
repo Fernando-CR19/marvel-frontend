@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-export const API_URL = process.env.REACT_APP_MARVEL_API_BASE;
-export const PUBLIC_KEY = process.env.REACT_APP_MARVEL_PUBLIC_KEY;
-export const PRIVATE_KEY = process.env.REACT_APP_MARVEL_PRIVATE_KEY;
+export const API_BASE = process.env.REACT_APP_API_BASE;
 
 export const useFetchApi = (resource = "", method = "GET", options = {}) => {
     const [isFetching, setIsFetching] = useState(false);
@@ -21,7 +19,7 @@ export const useFetchApi = (resource = "", method = "GET", options = {}) => {
         setResponse(null);
 
         try {
-            const url = `${API_URL}${resource}`;
+            const url = `${API_BASE}${resource}`;
 
             const response = await fetch(url, {
                 headers: {

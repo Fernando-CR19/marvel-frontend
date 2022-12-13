@@ -38,7 +38,7 @@ export const useFetchApi = (resource = "", method = "GET", options = {}) => {
                 throw res;
             }
 
-            setData(res.data);
+            setData(res);
         } catch (err) {
             setError(err);
         } finally {

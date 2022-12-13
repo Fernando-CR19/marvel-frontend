@@ -15,8 +15,8 @@ export const View = ({ children }) => {
 
   return (
     <div>
-      <Sidebar isOpen={sidebarIsOpen} onCloseSidebar={onCloseSidebar} />
       <Header onOpenSidebar={onOpenSidebar} />
+      <Sidebar isOpen={sidebarIsOpen} onCloseSidebar={onCloseSidebar} />
       <main className="p-4">{children}</main>
     </div>
   );

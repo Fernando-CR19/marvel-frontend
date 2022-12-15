@@ -1,11 +1,35 @@
 import { SignUpView } from "../../components/SignUpView";
-import { useSignUpForm } from "../../components/SignUpForm/useSignUpForm";
+import { useSignInForm } from "../../components/SignInForm/useSignInForm";
+import { useFetchApi } from "../../hooks/useFetchApi";
+import { useAuthContext } from "../../contexts/Auth";
+import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
 export const SignUpViewContainer = () => {
-    const form = useSignUpForm({
+    const { data, startFetch } = useFetchApi("/auth/signup", "POST");
+    const { setAuth } = useAuthContext();
+
+    const form = useSignInForm({
         onSubmit: (values) => {
-            console.log("sign up form values", values);
+            console.log(values);
+            startFetch(JSON.stringify(values));
+            console.log("sign in form values", values);
         },
     });
-    return <SignUpView formProps={form} />;
+
+    useEffect(() => {
+        if (!form.isSubmitting) {
+            return;
+        }
+        if (data) {
+            setAuth(data)
+        }
+    }, [data, form])
+
+    return form.isSubmitting && data?.user ? (
+        <Navigate to="/my-account" />
+    ) : (
+        <SignUpView formProps={form} />
+    )
+
 };

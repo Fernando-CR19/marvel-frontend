@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
 export const SignInViewContainer = () => {
-    const { data, startFetch } = useFetchApi("/auth/signin", "POST");
+    const { data, startFetch } = useFetchApi("/auth/local/signin", "POST");
     const { setAuth } = useAuthContext();
 
     const form = useSignInForm({

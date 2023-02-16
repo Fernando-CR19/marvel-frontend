@@ -3,7 +3,8 @@ import { View } from "../../components/View";
 import { CharactersGrid } from "../../components/CharactersGrid";
 import { Drawer } from "../../components/Drawer";
 import { Accordion } from "../../components/Accordion";
-import { Pagination } from "../../components/Pagination";
+// import { Pagination } from "../../components/Pagination";
+import { Slider } from "../../components/Slider";
 
 import { useFetchApi } from "../../hooks/useFetchApi";
 
@@ -71,7 +72,8 @@ export const HomeViewContainer = () => {
     <>
       <Drawer show={show} onClick={onClick} />
       <View>
-        <Pagination />
+        {/* <Pagination /> */}
+        {/* <Slider /> */}
         <Accordion items={items} onToggle={onAccordionToggle} />
         <button onClick={onClick}>toggle Drawer</button>
         <CharactersGrid characters={characters} />

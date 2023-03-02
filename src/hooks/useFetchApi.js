@@ -26,7 +26,7 @@ export const useFetchApi = (resource = "", method = "GET", options = { headers: 
       const response = await fetch(url, {
         headers: {
           Authorization: `Bearer ${auth?.access_token}`,
-          ...options?.headers,    
+          ...options?.headers,
         },
         body,
         method,
